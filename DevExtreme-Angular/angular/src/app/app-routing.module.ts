@@ -12,11 +12,6 @@ const routes: Routes = [
     loadChildren: () => import('./dev-extreme/dev-extreme.module').then((m) => m.DevExtremeModule),
   },
   {
-    path: 'account',
-    loadChildren: () =>
-      import('@abp/ng.account').then((m) => m.AccountModule.forLazy({ redirectUrl: '/' })),
-  },
-  {
     path: 'identity',
     loadChildren: () => import('@abp/ng.identity').then((m) => m.IdentityModule.forLazy()),
   },
@@ -33,7 +28,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, { relativeLinkResolution: 'legacy' })],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}

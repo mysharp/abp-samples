@@ -10,7 +10,7 @@ namespace EventOrganizer.MongoDB
     public class EventOrganizerMongoDbContext : AbpMongoDbContext
     {
         public IMongoCollection<AppUser> Users => Collection<AppUser>();
-
+        
         public IMongoCollection<Event> Events => Collection<Event>();
 
         protected override void CreateModel(IMongoModelBuilder modelBuilder)
@@ -19,12 +19,9 @@ namespace EventOrganizer.MongoDB
 
             modelBuilder.Entity<AppUser>(b =>
             {
+                /* Sharing the same "AbpUsers" collection
+                 * with the Identity module's IdentityUser class. */
                 b.CollectionName = "AbpUsers";
-            });
-
-            modelBuilder.Entity<Event>(b =>
-            {
-                b.CollectionName = "Events";
             });
         }
     }

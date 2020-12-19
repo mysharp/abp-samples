@@ -9,13 +9,13 @@ namespace EventOrganizer.Events
     {
         Task<Guid> CreateAsync(EventCreationDto input);
 
-        Task<EventDetailDto> GetAsync(Guid id);
-
         Task<List<EventDto>> GetUpcomingAsync();
+
+        Task<EventDetailDto> GetAsync(Guid id);
 
         Task RegisterAsync(Guid id);
 
-        Task UnRegisterAsync(Guid id);
+        Task UnregisterAsync(Guid id);
 
         Task DeleteAsync(Guid id);
     }

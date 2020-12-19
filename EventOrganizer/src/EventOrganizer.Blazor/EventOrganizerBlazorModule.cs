@@ -55,7 +55,7 @@ namespace EventOrganizer.Blazor
         {
             Configure<AbpNavigationOptions>(options =>
             {
-                options.MenuContributors.Add(new EventOrganizerMenuContributor());
+                options.MenuContributors.Add(new EventOrganizerMenuContributor(context.Services.GetConfiguration()));
             });
         }
 
@@ -82,7 +82,7 @@ namespace EventOrganizer.Blazor
 
         private static void ConfigureUI(WebAssemblyHostBuilder builder)
         {
-            builder.RootComponents.Add<App>("app");
+            builder.RootComponents.Add<App>("#ApplicationContainer");
         }
 
         private static void ConfigureHttpClient(ServiceConfigurationContext context, IWebAssemblyHostEnvironment environment)
@@ -103,9 +103,7 @@ namespace EventOrganizer.Blazor
 
         public override void OnApplicationInitialization(ApplicationInitializationContext context)
         {
-            context.ServiceProvider
-                .UseBootstrapProviders()
-                .UseFontAwesomeIcons();
+            
         }
     }
 }

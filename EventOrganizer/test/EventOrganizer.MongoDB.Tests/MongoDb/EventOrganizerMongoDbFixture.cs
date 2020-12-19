@@ -10,7 +10,7 @@ namespace EventOrganizer.MongoDB
 
         static EventOrganizerMongoDbFixture()
         {
-            MongoDbRunner = MongoDbRunner.Start();
+            MongoDbRunner = MongoDbRunner.Start(singleNodeReplSet: true, singleNodeReplSetWaitTimeout: 20);
             ConnectionString = MongoDbRunner.ConnectionString;
         }
 
